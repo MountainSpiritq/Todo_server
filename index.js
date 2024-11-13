@@ -1,7 +1,6 @@
 import express from "express"
 import mysql from 'mysql2/promise'
 import { configDB } from "./configDB.js"
-import cors from "cors"
 
 const PORT=8000
 let connection
@@ -15,7 +14,6 @@ try {
 
 const app=express()
 app.use(express.json())
-app.use(cors())
 
 app.get('/todos',async (req,resp)=>{
     try {
@@ -59,7 +57,7 @@ app.delete('/todos/:id',async (req,resp)=>{
     }
 })
 
-app.put('/todos/completed/:id',async (req,resp)=>{
+app.put('/todos/:id',async (req,resp)=>{
     const{id}=req.params
     
     try {
