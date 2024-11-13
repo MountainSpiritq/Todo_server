@@ -1,5 +1,6 @@
 import express from "express"
 import mysql from 'mysql2/promise'
+import cors from "cors"
 import { configDB } from "./configDB.js"
 
 const PORT=8000
@@ -13,6 +14,7 @@ try {
 }
 
 const app=express()
+app.use(cors())
 app.use(express.json())
 
 app.get('/todos',async (req,resp)=>{
